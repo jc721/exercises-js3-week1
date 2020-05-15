@@ -40,6 +40,7 @@ class Triangle2 extends Polygon {
   constructor(height, width) {
     super(height, width);
     this.name = "Triangle";
+    this.sides = 3;
   }
   get areasTriangle() { return (this.height * this.width) / 2; }
   sayName() {
