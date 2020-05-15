@@ -40,33 +40,47 @@
    */
 
 
-function myFunction(salary, taxCode, incomeTax1, incomeTax2, ownsCar) {
-  var totalIncomeTax = incomeTax1 + incomeTax2;
-  var studentLoan = (salary - 17775) * 0.09;
-  var originalSalary = salary;
-  var nationalInsurance = null;
+//function of taxcalculator to calculate total tax.
+function taxCalculator(salary, taxCode, baseIncomeTax, additionalIncomeTax, ownCar) {
 
-  if (taxCode === "1150L") {
-    nationalInsurance = salary * 0.1;
-  } else if (taxCode === "ST") {
-    nationalInsurance = salary * 0.05;
-  } else {
-    nationalInsurance = salary * 0.08;
-  }
+   //National Insurance calculator:
+   function nInsurance() {
+      if (taxCode === "1150L") {
+         nationalInsurance = salary * .1;
+      } else if (taxCode === "ST") {
+         nationalInsurance = salary * .05;
+      } else {
+         nationalInsurance = salary * .08;
+      }
+   }
+   nInsurance();
 
-  var deductions = [nationalInsurance, totalIncomeTax, studentLoan];
 
-  salary = salary - deductions[0];
-  salary = salary - deductions[1];
-  salary = salary - deductions[2];
+   //IncomeTax calculator:
+   const incomeTax = [baseIncomeTax, additionalIncomeTax];
+   const totalIncomeTax = incomeTax[0] + incomeTax[1];
 
-  return (
-    "Your gross income is £" +
-    originalSalary.toString() +
-    " and your net income is £" +
-    salary.toString() +
-    "."
-  );
+   // Studentloan calculator:
+   let remainStudentLoan = 17775;
+   const studentLoan = (salary - remainStudentLoan) * .09;
+
+   //Salary calculator:
+   var grossSalary = salary;
+   const deductions = [nationalInsurance, totalIncomeTax, studentLoan];
+   var totalDeductions = 0;
+   for (let i = 0; i < deductions.length; i++) {
+      totalDeductions += deductions[i];
+   }
+   var netIncome = grossSalary - totalDeductions;
+
+   //returning the value:
+   return (
+      "Your gross income is ï¿½" +
+      grossSalary.toString() +
+      " and your net income is ï¿½" +
+      netIncome.toString() +
+      "."
+   );
 }
 
-console.log(myFunction(28000, "1150L", 1000, 580, false));
+console.log(taxCalculator(28000, "1150L", 1000, 580, false));

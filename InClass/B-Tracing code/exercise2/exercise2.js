@@ -3,7 +3,7 @@ function removeVowels(word) {
 
   var result = [];
 
-  characters.forEach(function(character) {
+  characters.forEach(function (character) {
     if (
       character === "a" ||
       character === "o" ||
@@ -21,7 +21,7 @@ function removeVowels(word) {
 }
 
 function removeVowelsForWords(words) {
-  var result = words.map(function(word) {
+  var result = words.map(function (word) {
     return removeVowels(word);
   });
 
@@ -32,7 +32,9 @@ function removeVowelsForWords(words) {
   Task 1
   Let's trace this piece of code - what is the value of result with this input
   */
-  var result = removeVowels('samuel');
+var result = removeVowels('samuel');
+
+console.log(result);
 
 
 
@@ -42,3 +44,4 @@ function removeVowelsForWords(words) {
     expected output?:
 */
 
+console.log(removeVowelsForWords(["Irina", "Etza", "Daniel"]));

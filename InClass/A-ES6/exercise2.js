@@ -21,7 +21,7 @@ class Rectangle extends Polygon {
     this.sides = 4;
     //this.area = this.height * this.width;
   }
-  get area() {return this.width * this.height;}
+  get area() { return this.width * this.height; }
   sayName() {
     console.log('Hi I am a polygon and my name is ' + this.name + '.');
   }
@@ -34,6 +34,17 @@ console.log('The area of this polygon is ' + r.area);
 
 //Create 2 new classes that extend from polygon: triangle and circle and log their names and areas
 
+var triangle = new Polygon(25, 15);
+console.log(triangle.name);
+const areasTriangle = (triangle.height * triangle.width) / 2;
+console.log(areasTriangle);
+
+
+const circle = new Polygon(10, 25);
+console.log(circle.name);
+const radius = ((circle.height) / 2) + ((circle.width * circle.width) / (8 * circle.height));
+const areasCircle = Math.PI * (radius * radius);
+console.log(areasCircle);
 
 
 
