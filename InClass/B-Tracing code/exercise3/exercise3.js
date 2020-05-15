@@ -40,7 +40,7 @@ var getRepos = function (repoName) {
 };
 
 
-
+console.log("Loading...");
 var migracodeRepos = getRepos('migracode-barcelona');
 migracodeRepos.then(function (repos) {
   // use repos in here
@@ -54,5 +54,5 @@ migracodeRepos.then(function (repos) {
   );
 });
 
-console.log("Loading...");
+
 
