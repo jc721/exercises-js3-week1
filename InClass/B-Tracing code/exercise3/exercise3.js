@@ -28,23 +28,31 @@
 
 
 var getRepos = function (repoName) {
-  fetch(`https://api.github.com/users/${repoName}/repos`)
+  return fetch(`https://api.github.com/users/${repoName}/repos`)
     .then(response => response.json())
     .then(function (data) {
       return (data.map(function (rep) {
-        //console.log(rep.name);
+        console.log(rep.name);
         return rep.name;
       }));
+
     });
 };
 
 
 
 var migracodeRepos = getRepos('migracode-barcelona');
+migracodeRepos.then(function (repos) {
+  // use repos in here
+  return repos.forEach(function (name) {
+    var myElement = document.querySelector("#main");
+    var paragraph = document.createElement("p");
+    paragraph.innerHTML = name;
+    myElement.appendChild(paragraph);
+  }
+
+  );
+});
+
 console.log("Loading...");
 
-
-var myElement = document.querySelector("#main");
-var paragraph = document.createElement("p");
-paragraph.innerHTML = migracodeRepos;
-myElement.appendChild(paragraph);
